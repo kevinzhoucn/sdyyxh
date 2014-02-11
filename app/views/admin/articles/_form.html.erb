@@ -1,0 +1,8 @@
+<%= simple_form_for( [:admin, @article], :html => { :class => 'span8 form-horizontal well'  }) do |f| %>
+  <%= f.input :title, label: "标题" || t('.article_title')  %><br />
+  <%= f.cktext_area :body, label: "内容" || t('.article_content') %><br />
+  <%= f.association :category, label: "分类" || t('.article_category'), include_blank: false%>  
+  <%= f.input :published, label: "发布" || t('.published') %>
+  <%= f.submit "保存" || t('.save'), :class => "btn btn-primary" %>
+  <%= link_to '取消', admin_articles_path, :class => "btn btn-info" %>
+<% end %>

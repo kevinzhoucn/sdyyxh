@@ -1,0 +1,25 @@
+<li><%= link_to '首页', '/', html_options = {:style => "color:white;font-weight:bold;font-size:110%;text-shadow: 0 0 0 white;padding-right:0px"}%></li>
+<% Category.nav_menu.each do |category| %>
+	<% if Category.s_menu(category).present? %>
+		<li>
+			<%= link_to category.name, category, html_options = {:style => "color:white;font-weight:bold;font-size:110%;text-shadow: 0 0 0 white;padding-right:0px"} %>
+		</li>
+		<li class="dropdown">
+			<a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/" style="padding-left:5px;padding-right:5px">  
+		    	<b class="caret" style="border-top:4px solid #F7EDED"></b>
+		 	 </a>  
+		  	<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel"> 
+		  		<% (Category.s_menu(category)).each do |sub_menu| %>
+			    	<li role="presentation">
+			    		<%= link_to sub_menu.name, sub_menu, html_options = {:role => "menuitem", :tabindex => "-1"} %>
+			    	</li>
+		        <% end %>
+		  	</ul>  
+		</li>
+	<% else %>
+		<li>				
+			<%= link_to category.name, category, html_options = {:style => "color:white;font-weight:bold;font-size:110%;text-shadow: 0 0 0 white"} %>
+		</li>
+	<% end %>	
+<% end %>
+<li><%= link_to '在线报名', '/', html_options = {:style => "color:white;font-weight:bold;font-size:110%;text-shadow: 0 0 0 white;padding-right:0px"}%></li>

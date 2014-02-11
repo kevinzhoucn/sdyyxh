@@ -1,0 +1,9 @@
+<%= simple_form_for([:admin, @category], :html => { :class => 'span6 form-horizontal well'}) do |f| %>
+  <%= f.input :name, label: '类别名称' %>
+  <div class="field" style="margin:10px 0px 10px 0px">
+    <label>下拉菜单</label>
+    <%= f.collection_select :submenu_of, Category.where(fixed_menu: true), :id, :name %>
+  </div>
+  <%= f.submit '保存', :class => "btn btn-primary btn-large" %>
+  <%= link_to '取消', admin_articles_path, :class => "btn btn-info" %>
+<% end %>

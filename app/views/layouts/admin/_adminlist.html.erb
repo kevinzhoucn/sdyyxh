@@ -1,0 +1,19 @@
+<li class="nav-header">
+	<span class="color-black font14"><%= t('.edit_category') %></span>
+</li>
+<% management_list.each do |category| %>
+	<li>
+		<span><%= link_to category.name, admin_category_path(category), html_options = { :class => "font11" } %></span>	
+		<span><%= link_to "删除", admin_category_path(category), method: :delete, data: { confirm: '确定删除?' }, :class => "font11", :style => "color:black;float:right" %></span>
+		<span><%= link_to "编辑|", edit_admin_category_path(category), html_options = { :class => "font11", :style => "color:black;float:right" } %></span>
+	</li>
+<% end %>
+<li>
+	<%= link_to t('.new_category'), new_admin_category_path, html_options = { :class => "font11" } %>
+</li>
+<li class="nav-header"> 
+	<%= link_to t('.edit_article'), admin_articles_path, { :class => "color-black font14" } %> 
+</li>
+<li>
+	<%= link_to t('.new_article'), new_admin_article_path, { :class => "font11" } %>
+</li>

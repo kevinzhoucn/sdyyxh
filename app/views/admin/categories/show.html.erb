@@ -1,0 +1,15 @@
+<div class="span9 well" style="margin:0px;background-color:white;padding-right:0px;">
+	<p id="notice"><%= notice %></p>
+	<p>
+		<i class="icon-file icon-large" style="color:red"></i>
+		<span style="margin-left:10px;color:red;font-weight:bold;font-size:130%"><%= @category.name %></span>
+	</p>
+	
+	<ul style="margin-top:20px;color:red">
+		<% @category.articles.each do |article| %>
+			<li style="margin-bottom:10px">
+				<%= link_to article.title, article, html_options = { :style => 'color:red' } %>
+			</li>
+		<% end %>	
+	</ul>
+</div>

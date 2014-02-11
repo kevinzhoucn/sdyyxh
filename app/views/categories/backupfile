@@ -1,0 +1,73 @@
+<h1>文章列表</h1>
+
+<table>
+  <tr>    
+    <th>标题</th>    
+    <th>发布日期</th>        
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>    
+    <td><%= article.title %></td>
+    <td><%= article.published_at %></td>
+    <td><% article.category_id %></td>
+    <td><%= link_to '查看', article %></td>
+    
+    <td><%= link_to '编辑', edit_article_path(article) %></td>
+    <td><%= link_to '删除', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% link_to 'New Article', new_article_path %>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="span9 well" style="margin:0px;background-color:white;padding-right:0px;">
+  <p>
+    <i class="icon-file icon-large" style="color:red"></i>
+    <span style="margin-left:10px;color:red;font-weight:bold;font-size:130%"><%= @article.title %></span>
+  </p>
+  <p style="margin-top:20px">
+    <%= @article.body %>
+  </p>
+</div>
+<% link_to '编辑', edit_article_path(@article) %>
+
+categories, show 
+  <div class="span9 well" style="margin:0px;background-color:white;padding-right:0px;">
+    <p id="notice"><%= notice %></p>
+    <p>
+      <i class="icon-file icon-large" style="color:red"></i>
+      <span style="margin-left:10px;color:red;font-weight:bold;font-size:130%"><%= @category.name %></span>
+    </p>
+    <ul style="margin-top:20px;color:red">
+      <% @category.articles.each do |article| %>
+        <li style="margin-bottom:10px">
+          <%= link_to article.title, article, html_options = { :style => 'color:red' } %>
+        </li>
+      <% end %> 
+    </ul>
+    <% if not @category.own_id.present? %>
+      <%= link_to '编辑', edit_category_path(@category) %>
+    <% end %>
+    <% link_to 'Back', categories_path %>
+  </div>
+
+
+<!-- <li class="nav-header"> 
+  <%= link_to t('.edit_category'), categories_path, html_options = { :class => "color-black font14" } %> 
+</li>
+
+<% Category.all.each do |category| %>
+  <li>        
+    <%= link_to category.name, edit_category_path(category), html_options = { :class => "font11" } %>
+  </li>
+<% end %> -->

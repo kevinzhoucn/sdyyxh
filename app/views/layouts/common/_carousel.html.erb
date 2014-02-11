@@ -1,0 +1,74 @@
+<div class="span7 well" style="background-color: white">
+  <div id="myCarousel" class="carousel slide" style="max-width:670px;max-height:447px">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
+    </ol>
+    <div class="carousel-inner">
+      <div class="active item">
+        <%= image_tag("slide-01.jpg") %>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>图片1</h1>
+            <p class="lead">图片展示1</p>          
+          </div>
+        </div>
+      </div>
+      <!--
+      <div class="item">
+        <%= image_tag("slide-02.jpg") %>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>图片1</h1>
+            <p class="lead">图片展示1</p>   
+          </div>
+        </div>
+      </div>
+    -->
+      <div class="item">
+        <%= image_tag("slide-03.jpg") %>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>图片1</h1>
+            <p class="lead">图片展示1</p>   
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
+  <script type="text/javascript">  
+      $(function(){
+        // carousel demo
+        $('#myCarousel').carousel({
+          interval: 5000
+        })        
+      })
+  </script>
+</div>
+
+
+<div class="span4 well" style="background-color:white;width: 32%;">
+  <i class="icon-envelope icon-large" style="color:red"></i>
+  <span style="margin-left:10px;color:red;font-weight:bold">近期公告</span>
+  <ul style="margin-top:10px;margin-left:15px">
+    <%# Category.find_by_name('近期公告') do |recent| %>
+      <%# recent.get_recent_article.each do |article| %>
+      <% Article.recent.each do |article| %>
+        <% if article.published %>
+          <li style="color:red;font-size:90%">        
+            <%= link_to truncate(strip_tags(article.title), :length => 25), article, html_options = {:style => "color:red"} %>
+            <span style="float:right"><%= article.published_at.strftime('%Y-%m-%d').to_s %></span>
+          </li>
+        <% end %>
+      <% end %>
+      <li style="margin:10px 0px 8px 0px;float:right;list-style:none">
+        <%#= link_to "查看更多", category_path(recent) %>
+        <%= link_to "查看更多", articles_path %>
+      </li>
+    <%# end %>
+  </ul>  
+</div>

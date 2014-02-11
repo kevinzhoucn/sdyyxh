@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<div class="span9 well" style="margin:0px;background-color:white;padding-right:0px;">
+	<p>
+		<i class="icon-file icon-large" style="color:red"></i>
+		<span style="margin-left:10px;color:red;font-weight:bold;font-size:130%"><%= @article.title %></span>
+	</p>
+	<p style="margin-top:20px">
+		<%= @article.body.html_safe %>
+	</p>
+</div>

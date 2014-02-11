@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="span3">
+    <div class="well sidebar-nav">
+<!--      <h3><%= t('.site_manangment') %></h3> -->
+	  <h3>网站管理</h3>
+      <ul class="nav nav-list">                
+        <%= render :partial => 'layouts/admin/adminlist', :locals => { management_list: @management_list  } %>
+      </ul>
+    </div><!--/.well -->
+  </div><!--/span-->
+</div>
